@@ -1,6 +1,6 @@
 {
-  "name": "bitcoin-cli",
-  "version": "1.0.0",
+  "name": "bitconv-cli",
+  "version": "1.0.1",
   "description": "A CLI to convert Bitcoin to any currency provided.",
   "main": "index.js",
   "scripts": {
@@ -17,7 +17,7 @@
   },
   "preferGlobal": true,
   "bin": {
-    "bitcoin-cli": "bin/main.js"
+    "bitconv-cli": "bin/main.js"
   },
   "nyc": {
     "reporter": [
@@ -30,7 +30,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GuiSAlmeida/bitcoin-cli.git"
+    "url": "git+https://github.com/GuiSAlmeida/bitconv-cli.git"
   },
   "keywords": [
     "js",
@@ -40,9 +40,9 @@
   "author": "Guilherme Almeida <guisalmeida.dev@gmail.com> (https://guisalmeida.com/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/GuiSAlmeida/bitcoin-cli/issues"
+    "url": "https://github.com/GuiSAlmeida/bitconv-cli/issues"
   },
-  "homepage": "https://github.com/GuiSAlmeida/bitcoin-cli#readme",
+  "homepage": "https://github.com/GuiSAlmeida/bitconv-cli#readme",
   "devDependencies": {
     "@babel/cli": "^7.10.5",
     "@babel/core": "^7.11.1",

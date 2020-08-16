@@ -8,7 +8,7 @@ const convertBTC = require('./convertBTC');
 
 program
   .version(pkg.version)
-  .description(`${figlet.textSync('bitcoin-cli')}
+  .description(`${figlet.textSync('bitconv-cli')}
   Convert Bitcoin to any currency provided
   `)
   .option('-C, --currency <currency>', 'Currency to be converted. (default: USD)')

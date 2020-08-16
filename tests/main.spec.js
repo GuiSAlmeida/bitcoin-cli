@@ -7,8 +7,8 @@ const { exec } = require('child_process');
 const bitcoinCLI = './src/main.js';
 const pkg = require('../package.json');
 
-describe('Bitcoin-cli', () => {
-  it('should return version of bitcoin-cli', (done) => {
+describe('bitconv-cli', () => {
+  it('should return version of bitconv-cli', (done) => {
     exec(`${bitcoinCLI} --version`, (err, stdout, stderr) => {
       if (err) throw err;
 
@@ -17,7 +17,7 @@ describe('Bitcoin-cli', () => {
     });
   });
 
-  it('should return a description when bitcoin-cli --help', (done) => {
+  it('should return a description when bitconv-cli --help', (done) => {
     exec(`${bitcoinCLI} --help`, (err, stdout, stderr) => {
       if (err) throw err;
 
@@ -26,7 +26,7 @@ describe('Bitcoin-cli', () => {
     });
   });
 
-  it('should return currency option when bitcoin-cli --help', (done) => {
+  it('should return currency option when bitconv-cli --help', (done) => {
     exec(`${bitcoinCLI} --help`, (err, stdout, stderr) => {
       if (err) throw err;
 
@@ -35,7 +35,7 @@ describe('Bitcoin-cli', () => {
     });
   });
 
-  it('should return amount option when bitcoin-cli --help', (done) => {
+  it('should return amount option when bitconv-cli --help', (done) => {
     exec(`${bitcoinCLI} --help`, (err, stdout, stderr) => {
       if (err) throw err;
 
