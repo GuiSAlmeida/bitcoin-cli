@@ -17,6 +17,12 @@
 $ npm install -g bitconv-cli
 ```
 
+Create a global symlink for a dependency.
+
+```node
+npm link
+```
+
 ### How to use
 
 ```
