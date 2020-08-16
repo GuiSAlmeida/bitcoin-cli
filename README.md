@@ -13,13 +13,13 @@
 
 ### Installing
 
-```
+```node
 $ npm install -g bitconv-cli
 ```
 
 ### How to use
 
-```sh
+```
   Usage: bitconv-cli [options]
 
   Options:
