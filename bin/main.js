@@ -11,5 +11,5 @@ var pkg = require('../package.json');
 
 var convertBTC = require('./convertBTC');
 
-program.version(pkg.version).description("".concat(figlet.textSync('bitconv-cli'), "\n  Convert Bitcoin to any currency provided\n  ")).option('-C, --currency <currency>', 'Currency to be converted. (default: USD)').option('-A, --amount <amount>', 'Value in Bitcoin to convert. (default: 1)').parse(process.argv);
-convertBTC(program.currency, program.amount);
+program.version(pkg.version).description("".concat(figlet.textSync('bitconv-cli'), "\n  Convert Bitcoin to any currency provided\n  ")).option('-C, --currency <currency>', 'Currency to be converted. (default: USD)').option('-A, --amount <amount>', 'Value in Bitcoin to convert. (default: 1)').name('bitconv-cli').usage('[amount] [currency]').parse(process.argv);
+convertBTC(program.amount, program.currency);

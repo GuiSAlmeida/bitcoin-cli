@@ -13,12 +13,6 @@ const convertBTC = require('../src/convertBTC.js');
 describe('convertBTC', () => {
   let consoleStub;
 
-  const responseMock = {
-    success: true,
-    time: '14-04-2016 13:55:32',
-    price: 424.93,
-  };
-
   beforeEach(() => {
     consoleStub = sinon.stub(console, 'info');
   });
@@ -28,59 +22,39 @@ describe('convertBTC', () => {
   });
 
   it('should use USD and 1 as amount default', async () => {
-    // https://apiv2.bitcoinaverage.com/convert/global?from=BTC&to=USD&amount=1
-    nock('https://apiv2.bitcoinaverage.com', {
-      headers: {
-        'x-ba-key': 'M2I5ZTU3OTg4NDA1NDg0Y2I5ZWViMTg1Zjg1YmI4MDg',
-      },
-    })
-      .get('/convert/global')
-      .query({ from: 'BTC', to: 'USD', amount: 1 })
-      .reply(200, responseMock);
+    nock('https://blockchain.info')
+      .get('/tobtc')
+      .query({ currency: 'USD', value: 1 })
+      .reply(200, 0.00001727);
 
     await convertBTC();
-    expect(consoleStub).to.have.been.calledWith(`${chalk.green(1)} BTC to ${chalk.cyan('USD')} = ${chalk.yellow(424.93)}`);
+    expect(consoleStub).to.have.been.calledWith(`${chalk.green(1)} ${chalk.cyan('USD')} = ${chalk.yellow(0.00001727)}BTC`);
   });
 
   it('should use USD and 10 as amount default', async () => {
-    // https://apiv2.bitcoinaverage.com/convert/global?from=BTC&to=USD&amount=10
-    nock('https://apiv2.bitcoinaverage.com', {
-      headers: {
-        'x-ba-key': 'M2I5ZTU3OTg4NDA1NDg0Y2I5ZWViMTg1Zjg1YmI4MDg',
-      },
-    })
-      .get('/convert/global')
-      .query({ from: 'BTC', to: 'USD', amount: 10 })
-      .reply(200, responseMock);
+    nock('https://blockchain.info')
+      .get('/tobtc')
+      .query({ currency: 'USD', value: 10 })
+      .reply(200, 0.00017256);
 
-    await convertBTC('USD', 10);
-    expect(consoleStub).to.have.been.calledWith(`${chalk.green(10)} BTC to ${chalk.cyan('USD')} = ${chalk.yellow(424.93)}`);
+    await convertBTC(10, 'USD');
+    expect(consoleStub).to.have.been.calledWith(`${chalk.green(10)} ${chalk.cyan('USD')} = ${chalk.yellow(0.00017256)}BTC`);
   });
 
   it('should use BRL and 1 as amount default', async () => {
-    // https://apiv2.bitcoinaverage.com/convert/global?from=BTC&to=USD&amount=10
-    nock('https://apiv2.bitcoinaverage.com', {
-      headers: {
-        'x-ba-key': 'M2I5ZTU3OTg4NDA1NDg0Y2I5ZWViMTg1Zjg1YmI4MDg',
-      },
-    })
-      .get('/convert/global')
-      .query({ from: 'BTC', to: 'BRL', amount: 1 })
-      .reply(200, responseMock);
+    nock('https://blockchain.info')
+      .get('/tobtc')
+      .query({ currency: 'BRL', value: 1 })
+      .reply(200, 0.00000329);
 
-    await convertBTC('BRL');
-    expect(consoleStub).to.have.been.calledWith(`${chalk.green(1)} BTC to ${chalk.cyan('BRL')} = ${chalk.yellow(424.93)}`);
+    await convertBTC(1, 'BRL');
+    expect(consoleStub).to.have.been.calledWith(`${chalk.green(1)} ${chalk.cyan('BRL')} = ${chalk.yellow(0.00000329)}BTC`);
   });
 
   it('should message user when api reply with error', async () => {
-    // https://apiv2.bitcoinaverage.com/convert/global?from=BTC&to=USD&amount=10
-    nock('https://apiv2.bitcoinaverage.com', {
-      headers: {
-        'x-ba-key': 'M2I5ZTU3OTg4NDA1NDg0Y2I5ZWViMTg1Zjg1YmI4MDg',
-      },
-    })
-      .get('/convert/global')
-      .query({ from: 'BTC', to: 'BRL', amount: 1 })
+    nock('https://blockchain.info')
+      .get('/tobtc')
+      .query({ currency: 'BRL', value: 1 })
       .replyWithError('Error');
 
     await convertBTC('BRL');

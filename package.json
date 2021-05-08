@@ -75,6 +75,6 @@
   },
   "dependencies": {
     "chalk": "^4.1.0",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.1"
   }
 }

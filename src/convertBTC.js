@@ -9,20 +9,14 @@ const spinner = ora({
   color: 'yellow',
 });
 
-const convertBTC = async (currency = 'USD', amount = 1) => {
-  const url = `https://apiv2.bitcoinaverage.com/convert/global?from=BTC&to=${currency}&amount=${amount}`;
+const convertBTC = async (amount = 1, currency = 'USD') => {
+  const url = `https://blockchain.info/tobtc?currency=${currency}&value=${amount}`;
   spinner.start();
-
-  return fetch(url, {
-    method: 'get',
-    headers: {
-      'x-ba-key': 'M2I5ZTU3OTg4NDA1NDg0Y2I5ZWViMTg1Zjg1YmI4MDg',
-    },
-  }).then((res) => {
+  return fetch(url).then((res) => {
     spinner.stop();
     return res.json();
   }).then((data) => {
-    console.info(`${chalk.green(amount)} BTC to ${chalk.cyan(currency)} = ${chalk.yellow(data.price)}`);
+    console.info(`${chalk.green(amount)} ${chalk.cyan(currency)} = ${chalk.yellow(data)}BTC`);
   }).catch((err) => {
     spinner.stop();
     console.info(chalk.red('Something went wrong in the api.'));

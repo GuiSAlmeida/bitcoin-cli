@@ -13,6 +13,8 @@ program
   `)
   .option('-C, --currency <currency>', 'Currency to be converted. (default: USD)')
   .option('-A, --amount <amount>', 'Value in Bitcoin to convert. (default: 1)')
+  .name('bitconv-cli')
+  .usage('[amount] [currency]')
   .parse(process.argv);
 
-convertBTC(program.currency, program.amount);
+convertBTC(program.amount, program.currency);
